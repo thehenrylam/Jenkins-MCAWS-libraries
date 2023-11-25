@@ -1,4 +1,4 @@
-package generic.interface
+package generic.interfaces
 
 class Nexus {
     def NEXUS_CLIENT_DIRECTORY
