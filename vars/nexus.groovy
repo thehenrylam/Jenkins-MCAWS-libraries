@@ -1,5 +1,11 @@
+def NEXUS_CLIENT_DIRECTORY = null
+
+def call( client_dir ) {
+    NEXUS_CLIENT_DIRECTORY = client_dir
+}
+
 def list( client_dir, nexus_dirpath, nexus_filename ) {
-    dir ( client_dir ) {
+    dir ( NEXUS_CLIENT_DIRECTORY ) {
         nexus_list_output = sh (
             script:"./raw/list.sh \"${nexus_dirpath}\" | grep -s \"${nexus_filename}\" | sed -n 's/^.*\\/repository\\/[^/]*\\/\\(.*\\)/\\1/p'", 
             returnStdout: true
