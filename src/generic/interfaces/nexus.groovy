@@ -1,5 +1,6 @@
 package generic.interfaces
 
+@NonCPS
 class Nexus {
     def NEXUS_CLIENT_DIRECTORY
 
