@@ -1,5 +1,7 @@
 package generic.interfaces
 
+import groovy.transform.NonCPS
+
 @NonCPS
 class Nexus {
     def NEXUS_CLIENT_DIRECTORY
