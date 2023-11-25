@@ -10,7 +10,7 @@ class Nexus {
     def list( nexus_dirpath, nexus_filename ) {
         dir ( this.NEXUS_CLIENT_DIRECTORY ) {
             def nexus_list_output = sh (
-                script: "./raw/list.sh \"${nexus_dirpath}\" | grep -s \"${nexus_filename}\" | sed -n 's/^.*\\/repository\\/[^/]*\\/\\(.*\\)/\\1/p'"
+                script: "./raw/list.sh \"${nexus_dirpath}\" | grep -s \"${nexus_filename}\" | sed -n 's/^.*\\/repository\\/[^/]*\\/\\(.*\\)/\\1/p'",
                 returnStdout: true
             ).trim()
 
