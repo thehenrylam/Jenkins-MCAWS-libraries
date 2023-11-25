@@ -20,3 +20,23 @@ def getLatestFilename( client_dir, nexus_dirpath, nexus_filename ) {
     }
     return nexus_latest_filepath
 }
+
+def download( client_dir, nexus_filepath, minecraft_client_dir ) {
+    dir ( client_dir ) {
+        def nexus_filename = sh (script: "basename \"${nexus_filepath}\"", returnStdout: true).trim()
+        sh "./raw/download.sh ${minecraft_client_dir}/${nexus_filename} ${nexus_filepath}"
+    }
+}
+
+def downloadViaNexPull( client_dir, nexus_pull_filepath ) {
+    dir ( client_dir ) {
+        // Load plugins from Nexus
+        sh "python3 ./scripts/nexpull.py ${nexus_pull_filepath}"
+    }
+}
+
+def upload( client_dir, local_filepath, nexus_filepath ) {
+    dir ( client_dir ) {
+        sh "./raw/upload.sh ${local_filepath} ${nexus_filepath}"
+    }
+}
